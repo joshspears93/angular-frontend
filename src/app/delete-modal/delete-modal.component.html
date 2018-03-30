@@ -1,3 +1,12 @@
-<p>
-  delete-modal works!
-</p>
+<button type="button" class="btn btn-danger delete-button" title="Delete {{employee.firstName}} {{employee.lastName}}" (click)="openModal(template)">
+  <i class="material-icons">delete</i>
+</button>
+<!--<br><br>-->
+<!--<pre>{{message}}</pre>-->
+<ng-template #template>
+  <div class="modal-body text-center">
+    <p>Are you sure you want to delete {{employee.firstName}} {{employee.lastName}}?</p>
+    <button type="button" class="btn btn-success" (click)="confirm()" >Yes</button>
+    <button type="button" class="btn btn-danger" (click)="decline()" >No</button>
+  </div>
+</ng-template>

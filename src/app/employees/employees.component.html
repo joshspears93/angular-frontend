@@ -1,3 +1,55 @@
-<p>
-  employees works!
-</p>
+<h2 class="table-title">Employees</h2>
+
+<div class="table-size">
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col">Position</th>
+      <th scope="col">Date Hired</th>
+      <th scope="col">Active</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let employee of employees">
+      <td>{{employee.firstName}}</td>
+      <td>{{employee.lastName}}</td>
+      <td><a href="mailto:{{employee.emailAddress}}">{{employee.emailAddress}}</a></td>
+      <td>({{employee.phoneNumber | slice:0:3}})-{{employee.phoneNumber | slice:3:6}}-{{employee.phoneNumber | slice:6:10}}</td>
+      <td>{{employee.positionCategory}}</td>
+      <td>{{employee.dateHired | date}}</td>
+      <td>{{employee.active && 'Yes' || 'No'}}</td>
+      <td class="button-row">
+        <app-update-modal [employee]="employee"></app-update-modal>
+        <!--<button class="btn btn-primary" title="Update {{employee.firstName}} {{employee.lastName}}">Update</button>-->
+        <app-delete-modal [employee]="employee"></app-delete-modal>
+        <!--<button class="btn btn-danger delete-button" title="Delete {{employee.firstName}} {{employee.lastName}}">-->
+        <!--<i class="material-icons">delete</i>-->
+        <!--</button>-->
+      </td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
+<app-new-modal></app-new-modal>
+<!--<app-delete-modal></app-delete-modal>-->
+
+<!--<button class="btn btn-success" title="Add new employee">Add New Employee</button>-->
+
+
+<!--<div>-->
+<!--<label>name:-->
+<!--<input [(ngModel)]="employee.firstName" placeholder="name">-->
+<!--</label>-->
+<!--</div>-->
+<!--<button type="button" class="btn btn-danger">Danger</button>-->
+<!--<ul class="heroes">-->
+<!--<li *ngFor="let employee of employees">-->
+<!--<span class="badge">{{employee.id}}</span> {{employee.firstName}}-->
+<!--</li>-->
+<!--</ul>-->

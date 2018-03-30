@@ -1,3 +1,122 @@
-<p>
-  new-modal works!
-</p>
+<button type="button" class="btn btn-success" title="Create new employee" (click)="openModal(template)">
+  Add New Employee
+</button>
+<!--<br><br>-->
+<!--<pre>{{message}}</pre>-->
+<ng-template #template>
+  <div class="modal-body text-center">
+    <!--<p>Are you sure you want to update {{employee.firstName}} {{employee.lastName}}?</p>-->
+    <h5>New Employee:</h5>
+    <br>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm">
+          <strong>Employee ID:</strong>
+        </div>
+        <div class="col-sm">
+          123
+        </div>
+        <div class="col-sm">
+          <strong>Hired:</strong>
+        </div>
+        <div class="col-sm">
+          2018-10-10
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>First Name:</strong>
+        </div>
+        <div class="col-sm">
+          John
+        </div>
+        <div class="col-sm">
+          <strong>Address One:</strong>
+        </div>
+        <div class="col-sm">
+          123 Loser Lane
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Last Name:</strong>
+        </div>
+        <div class="col-sm">
+          Smith
+        </div>
+        <div class="col-sm">
+          <strong>Address Two:</strong>
+        </div>
+        <div class="col-sm">
+          Apt 311
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Middle Initial:</strong>
+        </div>
+        <div class="col-sm">
+          A
+        </div>
+        <div class="col-sm">
+          <strong>City:</strong>
+        </div>
+        <div class="col-sm">
+          Richmond
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Email:</strong>
+        </div>
+        <div class="col-sm">
+          smith_john@google.com
+        </div>
+        <div class="col-sm">
+          <strong>State:</strong>
+        </div>
+        <div class="col-sm">
+          Virginia
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Phone:</strong>
+        </div>
+        <div class="col-sm">
+          (804)-572-0113
+        </div>
+        <div class="col-sm">
+          <strong>Zip Code:</strong>
+        </div>
+        <div class="col-sm">
+          12345
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Position:</strong>
+        </div>
+        <div class="col-sm">
+          Direct
+        </div>
+        <div class="col-sm">
+          <strong>Active:</strong>
+        </div>
+        <div class="col-sm">
+          True
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <button type="button" class="btn btn-success" (click)="confirm()" title="Add new employee">Add Employee</button>
+    <button type="button" class="btn btn-danger" (click)="decline()" title="Cancel">Cancel</button>
+  </div>
+</ng-template>

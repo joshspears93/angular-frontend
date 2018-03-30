@@ -1,3 +1,141 @@
-<p>
-  update-modal works!
-</p>
+<button type="button" class="btn btn-primary" title="Update {{employee.firstName}} {{employee.lastName}}" (click)="openModal(template)">
+  Update
+</button>
+<!--<br><br>-->
+<!--<pre>{{message}}</pre>-->
+<ng-template #template>
+  <div class="modal-body text-center">
+    <!--<p>Are you sure you want to update {{employee.firstName}} {{employee.lastName}}?</p>-->
+    <h5>Employee: {{employee.firstName}} {{employee.lastName}}</h5>
+    <br>
+    <div class="container">
+
+      <div class="row">
+        <div class="col-sm">
+          <strong>Employee ID:</strong>
+        </div>
+        <div class="col-sm">
+          123
+        </div>
+        <div class="col-sm">
+          <strong>Hired:</strong>
+        </div>
+        <div class="col-sm">
+          2018-10-10
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>First Name:</strong>
+        </div>
+        <div class="col-sm">
+          <input [(ngModel)]="employeeCopy.firstName"
+                 placeholder="Fist Name">
+          <!--<input id="name" name="name" [(ngModel)]="employeeCopy.fieldName"-->
+          <!--placeholder="Fist Name" class="form-control" required minlength="4"-->
+          <!--appForbiddenName="bob" #name="ngModel" >-->
+          <!--<div *ngIf="name.invalid && (name.dirty || name.touched)"-->
+          <!--class="alert alert-danger">-->
+
+          <!--<div *ngIf="name.errors.required">-->
+          <!--Name is required.-->
+          <!--</div>-->
+          <!--<div *ngIf="name.errors.minlength">-->
+          <!--Name must be at least 4 characters long.-->
+          <!--</div>-->
+          <!--<div *ngIf="name.errors.forbiddenName">-->
+          <!--Name cannot be Bob.-->
+          <!--</div>-->
+
+          <!--</div>-->
+
+        </div>
+        <div class="col-sm">
+          <strong>Address One:</strong>
+        </div>
+        <div class="col-sm">
+          123 Loser Lane
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Last Name:</strong>
+        </div>
+        <div class="col-sm">
+          Smith
+        </div>
+        <div class="col-sm">
+          <strong>Address Two:</strong>
+        </div>
+        <div class="col-sm">
+          Apt 311
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Middle Initial:</strong>
+        </div>
+        <div class="col-sm">
+          A
+        </div>
+        <div class="col-sm">
+          <strong>City:</strong>
+        </div>
+        <div class="col-sm">
+          Richmond
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Email:</strong>
+        </div>
+        <div class="col-sm">
+          smith_john@google.com
+        </div>
+        <div class="col-sm">
+          <strong>State:</strong>
+        </div>
+        <div class="col-sm">
+          Virginia
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Phone:</strong>
+        </div>
+        <div class="col-sm">
+          (804)-572-0113
+        </div>
+        <div class="col-sm">
+          <strong>Zip Code:</strong>
+        </div>
+        <div class="col-sm">
+          12345
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+          <strong>Position:</strong>
+        </div>
+        <div class="col-sm">
+          Direct
+        </div>
+        <div class="col-sm">
+          <strong>Active:</strong>
+        </div>
+        <div class="col-sm">
+          True
+        </div>
+      </div>
+    </div>
+    <br><br>
+    <button type="button" class="btn btn-success" (click)="update()" title="Update {{employee.firstName}} {{employee.lastName}}">Update Employee</button>
+    <button type="button" class="btn btn-danger" (click)="cancel()" title="Cancel">Cancel</button>
+  </div>
+</ng-template>
