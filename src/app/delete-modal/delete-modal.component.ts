@@ -23,10 +23,9 @@ export class DeleteModalComponent implements OnInit {
     this.modalRef = this.modalService.show(template, {class: 'modal-md'});
   }
   confirm(): void {
-    this.deleteEmployee();
     this.deleted = true;
-    window.location.reload();
-    // this.updateTable();
+    this.removeEmployeeFromTable();
+    this.deleteEmployee();
   }
   decline(): void {
     this.modalRef.hide();
@@ -41,8 +40,8 @@ export class DeleteModalComponent implements OnInit {
     this.getEmployee();
     this.deleted = false;
   }
-  updateTable() {
-    this.notifyTable.emit('update');
+  removeEmployeeFromTable() {
+    this.notifyTable.emit(this.id);
   }
 
 }
