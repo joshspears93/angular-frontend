@@ -23,8 +23,6 @@ export class DeleteModalComponent implements OnInit {
     this.modalRef = this.modalService.show(template, {class: 'modal-md'});
   }
   confirm(): void {
-    this.deleted = true;
-    this.removeEmployeeFromTable();
     this.deleteEmployee();
   }
   decline(): void {
@@ -34,7 +32,9 @@ export class DeleteModalComponent implements OnInit {
     this.employeeService.getEmployeeById(this.id).subscribe(employee => this.employee = employee);
   }
   deleteEmployee(): void {
-    this.employeeService.deleteEmployeeById(this.id).subscribe();
+    this.employeeService.deleteEmployeeById(this.id).subscribe(response => this.deleted = true,
+      error => console.log('Error: ' + error),
+      () => this.removeEmployeeFromTable());
   }
   ngOnInit() {
     this.getEmployee();

@@ -40,7 +40,7 @@
   <h5>There are no employees on record, try creating some using the button below!</h5>
 </ng-template>
 <br>
-<app-new-modal></app-new-modal>
+<app-new-modal (notifyTable)="addEmployeeToTable($event)"></app-new-modal>
 <!--<app-delete-modal></app-delete-modal>-->
 
 <!--<button class="btn btn-success" title="Add new employee">Add New Employee</button>-->

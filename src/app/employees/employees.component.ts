@@ -19,12 +19,15 @@ export class EmployeesComponent implements OnInit {
   }
   public removeEmployeeFromTable(inputID: string): void {
     // Log ID to remove to console
-    console.log(inputID);
     for (let i = this.employees.length - 1; i >= 0; --i) {
       if (this.employees[i].id === inputID) {
         this.employees.splice(i, 1);
       }
     }
-}
+  }
+  public addEmployeeToTable(newEmployee: Employee): void {
+    console.log(newEmployee);
+    this.employees.push(newEmployee);
+  }
 
 }
