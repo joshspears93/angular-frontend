@@ -18,15 +18,13 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
   }
   public removeEmployeeFromTable(inputID: string): void {
-    console.log('Called from child');
+    // Log ID to remove to console
     console.log(inputID);
     for (let i = this.employees.length - 1; i >= 0; --i) {
       if (this.employees[i].id === inputID) {
         this.employees.splice(i, 1);
       }
     }
-    // this.employees = [];
-    // this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
 }
 
 }

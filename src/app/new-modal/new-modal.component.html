@@ -1,42 +1,63 @@
 <button type="button" class="btn btn-success" title="Create new employee" (click)="openModal(template)">
   Add New Employee
 </button>
-<!--<br><br>-->
-<!--<pre>{{message}}</pre>-->
 <ng-template #template>
   <div class="modal-body text-center">
-    <!--<p>Are you sure you want to update {{employee.firstName}} {{employee.lastName}}?</p>-->
     <h5>New Employee:</h5>
     <br>
-    <div class="container">
 
-      <div class="row">
-        <div class="col-sm">
-          <strong>Employee ID:</strong>
-        </div>
-        <div class="col-sm">
-          123
-        </div>
-        <div class="col-sm">
-          <strong>Hired:</strong>
-        </div>
-        <div class="col-sm">
-          2018-10-10
+    <form [formGroup]="newEmployeeForm">
+      Name:<input id="name" type="text" class="form-control" name="name" formControlName="name"
+                  required [(ngModel)]="newEmployee.firstName" >
+      <!--<div *ngIf="newEmployeeForm.controls['name'].errors && !newEmployeeForm.controls['name'].pristine" class="error-msg">-->
+        <!--<div [hidden]="!newEmployeeForm.controls['name'].errors.required">Name is required.</div>-->
+      <!--</div>-->
+
+      <div *ngIf="newEmployeeForm.controls['name'].errors && (newEmployeeForm.controls['name'].dirty || newEmployeeForm.touched)">
+        <div *ngIf="newEmployeeForm.controls['name'].errors.required">
+          Name is required
         </div>
       </div>
-      <br>
+
+      <!--<div *ngIf="name.invalid && (name.dirty || name.touched)"-->
+           <!--class="alert alert-danger">-->
+        <!--<div *ngIf="name?.errors?.required">-->
+          <!--First Name is required!-->
+        <!--</div>-->
+      <!--</div>-->
+
+
+
+      <button type="submit" [disabled]="!newEmployeeForm.valid" (click)="onSubmit()">Click</button>
+    </form>
+
+    <div class="container">
       <div class="row">
         <div class="col-sm">
           <strong>First Name:</strong>
         </div>
         <div class="col-sm">
-          John
+          <input id="firstName" name="firstName" class="form-control" required
+                 [(ngModel)]="newEmployee.firstName" #firstName="ngModel" placeholder="First Name">
+          <div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+               class="alert alert-danger">
+            <div *ngIf="firstName?.errors?.required">
+              First Name is required!
+            </div>
+          </div>
         </div>
         <div class="col-sm">
-          <strong>Address One:</strong>
+          <strong>Date Hired:</strong>
         </div>
         <div class="col-sm">
-          123 Loser Lane
+          <input type="text" id="dateHired" name="dateHired" class="form-control" placeholder="Date Hired" required
+                 [(ngModel)]="newEmployee.dateHired" #dateHired="ngModel" bsDatepicker [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+          <div *ngIf="dateHired.invalid && (dateHired.dirty || dateHired.touched)"
+               class="alert alert-danger">
+            <div *ngIf="dateHired?.errors?.required">
+              Date Hired is required!
+            </div>
+           </div>
         </div>
       </div>
       <br>
@@ -45,13 +66,21 @@
           <strong>Last Name:</strong>
         </div>
         <div class="col-sm">
-          Smith
+          <input id="lastName" name="lastName" class="form-control" required
+                 [(ngModel)]="newEmployee.lastName" #lastName="ngModel" placeholder="Last Name">
+          <div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+               class="alert alert-danger">
+            <div *ngIf="lastName?.errors?.required">
+              Last Name is required!
+            </div>
+          </div>
         </div>
         <div class="col-sm">
-          <strong>Address Two:</strong>
+          <strong>Address One:</strong>
         </div>
         <div class="col-sm">
-          Apt 311
+          <input id="addressOne" name="addressOne" class="form-control"
+                 [(ngModel)]="newEmployee.addressOne" #addressOne="ngModel" placeholder="Address One">
         </div>
       </div>
       <br>
@@ -60,13 +89,15 @@
           <strong>Middle Initial:</strong>
         </div>
         <div class="col-sm">
-          A
+          <input id="middleInt" name="middleInt" class="form-control" maxlength="1"
+                 [(ngModel)]="newEmployee.middleInitial" #middleInt="ngModel" placeholder="Middle Initial">
         </div>
         <div class="col-sm">
-          <strong>City:</strong>
+          <strong>Address Two:</strong>
         </div>
         <div class="col-sm">
-          Richmond
+          <input id="addressTwo" name="addressTwo" class="form-control"
+                 [(ngModel)]="newEmployee.addressTwo" #addressTwo="ngModel" placeholder="Address Two">
         </div>
       </div>
       <br>
@@ -75,13 +106,24 @@
           <strong>Email:</strong>
         </div>
         <div class="col-sm">
-          smith_john@google.com
+          <input id="email" name="email" class="form-control" required email type="email"
+                 [(ngModel)]="newEmployee.emailAddress" #email="ngModel" placeholder="Email Address">
+          <div *ngIf="email.invalid && (email.dirty || email.touched)"
+               class="alert alert-danger">
+            <div *ngIf="email?.errors?.required">
+              Email is required!
+            </div>
+            <div *ngIf="email?.errors?.email">
+              Invalid Email Address!
+            </div>
+          </div>
         </div>
         <div class="col-sm">
-          <strong>State:</strong>
+          <strong>City:</strong>
         </div>
         <div class="col-sm">
-          Virginia
+          <input id="city" name="city" class="form-control"
+                 [(ngModel)]="newEmployee.city" #city="ngModel" placeholder="City">
         </div>
       </div>
       <br>
@@ -90,13 +132,17 @@
           <strong>Phone:</strong>
         </div>
         <div class="col-sm">
-          (804)-572-0113
+          <input id="phone" name="phone" class="form-control" type="number"
+                 [(ngModel)]="newEmployee.phoneNumber" #phone="ngModel" placeholder="Phone Number"
+                 type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==11 && event.keyCode!=8) return false;">
         </div>
         <div class="col-sm">
-          <strong>Zip Code:</strong>
+          <strong>State:</strong>
         </div>
         <div class="col-sm">
-          12345
+          <select [(ngModel)]="newEmployee.state" id="state">
+            <option *ngFor="let state of states" [value]="state">{{state}}</option>
+          </select>
         </div>
       </div>
       <br>
@@ -105,18 +151,47 @@
           <strong>Position:</strong>
         </div>
         <div class="col-sm">
-          Direct
+          <select [(ngModel)]="newEmployee.positionCategory" id="category">
+            <option *ngFor="let position of positions" [value]="position">{{position}}</option>
+          </select>
+        </div>
+        <div class="col-sm">
+          <strong>Zip Code:</strong>
+        </div>
+        <div class="col-sm">
+          <input id="zipCode" name="zipCode" class="form-control" type="number"
+                 [(ngModel)]="newEmployee.zipCode" #zipCode="ngModel" placeholder="Zip Code"
+                 type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==5 && event.keyCode!=8) return false;">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-sm">
+        </div>
+        <div class="col-sm">
         </div>
         <div class="col-sm">
           <strong>Active:</strong>
         </div>
         <div class="col-sm">
-          True
+          <select [(ngModel)]="newEmployee.active" id="active" required #active="ngModel">
+            <option [value]="true"True>True</option>
+            <option [value]="false"false>False</option>
+          </select>
+          <div *ngIf="active.invalid && (active.dirty || active.touched)"
+               class="alert alert-danger">
+            <div *ngIf="active?.errors?.required">
+              Active flag is required!
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <br><br>
-    <button type="button" class="btn btn-success" (click)="confirm()" title="Add new employee">Add Employee</button>
-    <button type="button" class="btn btn-danger" (click)="decline()" title="Cancel">Cancel</button>
-  </div>
+
+
+
+<br><br>
+<button type="button" class="btn btn-success" (click)="addEmployee()" title="Add new employee">Add Employee</button>
+<button type="button" class="btn btn-danger" (click)="cancel()" title="Cancel">Cancel</button>
+</div>
 </ng-template>

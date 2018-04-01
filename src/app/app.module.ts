@@ -9,6 +9,9 @@ import { UpdateModalComponent } from './update-modal/update-modal.component';
 import { NewModalComponent } from './new-modal/new-modal.component';
 import {ModalModule} from 'ngx-bootstrap';
 import { EmployeeService} from './employee.service';
+import { BsDropdownModule} from 'ngx-bootstrap';
+import { BsDatepickerModule} from 'ngx-bootstrap';
+import { ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -24,6 +27,9 @@ import { EmployeeService} from './employee.service';
     FormsModule,
     ModalModule.forRoot(),
     HttpClientModule,
+    BsDropdownModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [
     EmployeeService,
