@@ -29,5 +29,11 @@ export class EmployeesComponent implements OnInit {
     console.log(newEmployee);
     this.employees.push(newEmployee);
   }
-
+  public updateEmployeeInTable(updatedEmployee: Employee): void {
+    for (let i = this.employees.length - 1; i >= 0; --i) {
+      if (this.employees[i].id === updatedEmployee.id) {
+        this.employees[i] = updatedEmployee;
+      }
+    }
+  }
 }

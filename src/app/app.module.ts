@@ -12,6 +12,7 @@ import { EmployeeService} from './employee.service';
 import { BsDropdownModule} from 'ngx-bootstrap';
 import { BsDatepickerModule} from 'ngx-bootstrap';
 import { ReactiveFormsModule} from '@angular/forms';
+import { SearchModalComponent } from './search-modal/search-modal.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ReactiveFormsModule} from '@angular/forms';
     EmployeesComponent,
     DeleteModalComponent,
     UpdateModalComponent,
-    NewModalComponent
+    NewModalComponent,
+    SearchModalComponent
   ],
   imports: [
     BrowserModule,

@@ -34,6 +34,11 @@ export class EmployeeService {
   addNewEmployee(newEmployee: Employee): Observable<any> {
     return this.http.post(this.employeeUrl, newEmployee, httpOptions);
   }
+  updateEmployee(updatedEmployee: Employee): Observable<any> {
+    const url = this.employeeUrl + '/' + updatedEmployee.id;
+    return this.http.put(url, updatedEmployee, httpOptions);
+
+  }
   private handleError(error: HttpErrorResponse) {
     console.log(error);
   }
