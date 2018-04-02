@@ -1,8 +1,6 @@
 <button type="button" class="btn btn-primary" title="Update employee" (click)="openModal(template)">
   Update
 </button>
-<!--<br><br>-->
-<!--<pre>{{message}}</pre>-->
 <ng-template #template>
   <div class="modal-body text-center">
     <h5>Employee: {{employee.firstName}} {{employee.lastName}}</h5>
@@ -132,7 +130,7 @@
             <strong>Zip Code:</strong>
           </div>
           <div class="col-sm">
-            <input id="zipCode" name="zipCode" class="form-control" type="number" formControlName="zipCode"
+            <input id="zipCode" name="zipCode" class="form-control" formControlName="zipCode"
                    [(ngModel)]="employee.zipCode" placeholder="Zip Code"
                    type="number" oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');" onKeyDown="if(this.value.length==5 && event.keyCode!=8) return false;">
           </div>
@@ -148,8 +146,8 @@
           </div>
           <div class="col-sm">
             <select [(ngModel)]="employee.active" id="active" required formControlName="active">
-              <option [value]="true"True>True</option>
-              <option [value]="false"false>False</option>
+              <option [value]="true">True</option>
+              <option [value]="false">False</option>
             </select>
             <div *ngIf="updatedEmployeeForm.controls['active'].errors && (updatedEmployeeForm.controls['active'].dirty || updatedEmployeeForm.controls['active']?.touched)" class="alert alert-danger">
               <div *ngIf="updatedEmployeeForm.controls['active'].errors.required">
@@ -161,7 +159,7 @@
       </div>
       <br><br>
       <button type="submit" class="btn btn-success" [disabled]="!updatedEmployeeForm.valid" (click)="onSubmit()" title="Update Employee">Update {{employee.firstName}}</button>
-      <button type="button" class="btn btn-danger" (click)="cancel()" title="Cancel" title="Cancel">Cancel</button>
+      <button type="button" class="btn btn-danger" (click)="cancel()" title="Cancel">Cancel</button>
     </form>
   </div>
 </ng-template>

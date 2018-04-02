@@ -43,11 +43,11 @@ export class UpdateModalComponent implements OnInit {
   }
   getEmployee(): void {
     this.employeeService.getEmployeeById(this.id).subscribe(employee => this.employee = employee);
-    // console.log(this.employee);
   }
   onSubmit(): void {
     this.modalRef.hide();
     this.updateEmployee();
+    this.updatedEmployeeForm.reset();
   }
   cancel(): void {
     this.modalRef.hide();

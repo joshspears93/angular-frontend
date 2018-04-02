@@ -7,7 +7,7 @@ import { EmployeesComponent } from './employees/employees.component';
 import { DeleteModalComponent } from './delete-modal/delete-modal.component';
 import { UpdateModalComponent } from './update-modal/update-modal.component';
 import { NewModalComponent } from './new-modal/new-modal.component';
-import {ModalModule} from 'ngx-bootstrap';
+import { ModalModule } from 'ngx-bootstrap';
 import { EmployeeService} from './employee.service';
 import { BsDropdownModule} from 'ngx-bootstrap';
 import { BsDatepickerModule} from 'ngx-bootstrap';

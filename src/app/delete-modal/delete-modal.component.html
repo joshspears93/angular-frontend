@@ -1,8 +1,6 @@
 <button type="button" class="btn btn-danger delete-button" title="Delete employee" (click)="openModal(template)">
   <i class="material-icons">delete</i>
 </button>
-<!--<br><br>-->
-<!--<pre>{{message}}</pre>-->
 <ng-template #template>
   <div *ngIf="!deleted">
     <div class="modal-body text-center">
@@ -16,5 +14,4 @@
       <p>{{employee.firstName}} {{employee.lastName}} has been deleted</p>
     </div>
   </div>
-
 </ng-template>

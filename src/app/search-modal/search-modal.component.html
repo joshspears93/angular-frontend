@@ -1,3 +1,23 @@
-<p>
-  search-modal works!
-</p>
+<button type="button" class="btn btn-secondary" title="Delete employee" (click)="openModal(template)">
+  <i class="material-icons md-24">search</i>
+</button>
+<ng-template #template>
+
+  <div class="modal-body text-center">
+    <h5>Employees with Last Name ({{name}})</h5>
+    <br>
+    <div *ngIf="employees?.length > 0; else noresults" class="table-size">
+      <ul class="list-group" *ngFor="let employee of employees">
+          <li class="list-group-item">
+            {{employee.firstName}} {{employee.lastName}}
+          </li>
+      </ul>
+    </div>
+    <br>
+    <button type="button" class="btn btn-danger" (click)="exit()" title="Exit">Exit</button>
+  </div>
+</ng-template>
+<ng-template #noresults>
+  <br>
+  <p>No Employees Found!</p>
+</ng-template>

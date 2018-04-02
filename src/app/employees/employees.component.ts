@@ -9,16 +9,17 @@ import { EmployeeService} from '../employee.service';
 })
 export class EmployeesComponent implements OnInit {
   employees: Employee[];
+  searchTerm: string;
   constructor(private employeeService: EmployeeService) { }
 
   ngOnInit() {
     this.getEmployees();
+    this.searchTerm = '';
   }
   getEmployees(): void {
     this.employeeService.getEmployees().subscribe(employees => this.employees = employees);
   }
   public removeEmployeeFromTable(inputID: string): void {
-    // Log ID to remove to console
     for (let i = this.employees.length - 1; i >= 0; --i) {
       if (this.employees[i].id === inputID) {
         this.employees.splice(i, 1);

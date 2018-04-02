@@ -15,7 +15,6 @@ export class NewModalComponent implements OnInit {
   newEmployee: Employee;
   positions: Array<string> = [];
   states: Array<string> = [];
-  validSubmit: boolean;
   @Output() notifyTable: EventEmitter<any> = new EventEmitter();
   newEmployeeForm = new FormGroup ({
     firstName: new FormControl(),
@@ -39,7 +38,6 @@ export class NewModalComponent implements OnInit {
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template, {class: 'modal-lg'});
     this.newEmployee = new Employee();
-    this.validSubmit = false;
   }
   ngOnInit() {
     this.initPositions();
@@ -48,6 +46,7 @@ export class NewModalComponent implements OnInit {
   onSubmit() {
     this.modalRef.hide();
     this.addEmployee();
+    this.newEmployeeForm.reset();
   }
   cancel(): void {
     this.modalRef.hide();

@@ -1,4 +1,21 @@
-<h2 class="table-title">Employees</h2>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+    </div>
+    <div class="col-md">
+      <h2>Employees</h2>
+    </div>
+    <div class="col-md">
+      <div class="input-group">
+        <input [(ngModel)]="searchTerm" placeholder="Search by Last Name..."/>
+      <span class="input-group-btn">
+        <app-search-modal [name]="searchTerm"></app-search-modal>
+      </span>
+    </div>
+    </div>
+  </div>
+</div>
 <div *ngIf="employees?.length > 0; else noemployeetemplate" class="table-size">
   <table class="table table-striped">
     <thead>
@@ -24,14 +41,9 @@
       <td>{{employee.active && 'Yes' || 'No'}}</td>
       <td class="button-row">
         <app-update-modal [id]="employee.id" (notifyTable)="updateEmployeeInTable($event)"></app-update-modal>
-        <!--<button class="btn btn-primary" title="Update {{employee.firstName}} {{employee.lastName}}">Update</button>-->
         <app-delete-modal [id]="employee.id" (notifyTable)="removeEmployeeFromTable($event)"></app-delete-modal>
-        <!--<button class="btn btn-danger delete-button" title="Delete {{employee.firstName}} {{employee.lastName}}">-->
-        <!--<i class="material-icons">delete</i>-->
-        <!--</button>-->
-      </td>
+       </td>
     </tr>
-
     </tbody>
   </table>
 </div>
@@ -41,19 +53,3 @@
 </ng-template>
 <br>
 <app-new-modal (notifyTable)="addEmployeeToTable($event)"></app-new-modal>
-<!--<app-delete-modal></app-delete-modal>-->
-
-<!--<button class="btn btn-success" title="Add new employee">Add New Employee</button>-->
-
-
-<!--<div>-->
-<!--<label>name:-->
-<!--<input [(ngModel)]="employee.firstName" placeholder="name">-->
-<!--</label>-->
-<!--</div>-->
-<!--<button type="button" class="btn btn-danger">Danger</button>-->
-<!--<ul class="heroes">-->
-<!--<li *ngFor="let employee of employees">-->
-<!--<span class="badge">{{employee.id}}</span> {{employee.firstName}}-->
-<!--</li>-->
-<!--</ul>-->
