@@ -27,11 +27,11 @@ import { SearchModalComponent } from './search-modal/search-modal.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     ModalModule.forRoot(),
     HttpClientModule,
     BsDropdownModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    ReactiveFormsModule
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     EmployeeService,
