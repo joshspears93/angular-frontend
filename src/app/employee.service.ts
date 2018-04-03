@@ -11,7 +11,7 @@ const httpOptions = {
 };
 @Injectable()
 export class EmployeeService {
-  private employeeUrl = 'http://localhost:8080/api/employees';
+  employeeUrl = 'http://localhost:8080/api/employees';
   constructor(
     private http: HttpClient
   ) { }

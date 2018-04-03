@@ -10,6 +10,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {EmployeeService} from './employee.service';
 import {BsDatepickerModule, BsDropdownModule, ModalModule} from 'ngx-bootstrap';
 import {HttpClientModule} from '@angular/common/http';
+
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -61,5 +62,7 @@ describe('AppComponent', () => {
     const el2 = fixture.debugElement.query(By.css('.web'));
     const spanEl2 = el2.nativeElement;
     expect(spanEl2.innerHTML).toContain('Josh Spears');
+  });
+  afterEach(function() {
   });
 });
