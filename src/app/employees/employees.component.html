@@ -20,6 +20,7 @@
   <table class="table table-striped">
     <thead>
     <tr>
+      <th scope="col">Picture</th>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
@@ -32,6 +33,7 @@
     </thead>
     <tbody>
     <tr *ngFor="let employee of employees">
+      <td><i class="material-icons">person</i></td>
       <td>{{employee.firstName}}</td>
       <td>{{employee.lastName}}</td>
       <td><a href="mailto:{{employee.emailAddress}}">{{employee.emailAddress}}</a></td>
